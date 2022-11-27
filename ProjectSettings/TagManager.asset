@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - EnemyBullet
   - ElectricSkill
+  - ElectricBullet
+  - FireSkill
   layers:
   - Default
   - TransparentFX

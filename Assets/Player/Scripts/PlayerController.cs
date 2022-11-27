@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool canJump;
     public bool electricPower = false;
+    public bool firePower = false;
+    public bool poisonPower = false;
+    public bool waterPower = false;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -154,10 +157,10 @@ public class PlayerController : MonoBehaviour
             health -= 1;
         }
 
-        if (other.gameObject.CompareTag("ElectricSkill"))
+        if (other.gameObject.CompareTag("FireSkill"))
         {
             Destroy(other.gameObject);
-            electricPower = true;
+            firePower = true;
         }
     }
 }

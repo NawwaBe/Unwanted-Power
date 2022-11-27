@@ -25,7 +25,7 @@ public class Weapon : MonoBehaviour
 
     private void CheckShoot()
     {
-        if (!GetComponent<PlayerController>().electricPower)
+        if (!GetComponent<PlayerController>().electricPower && !GetComponent<PlayerController>().firePower && !GetComponent<PlayerController>().poisonPower && !GetComponent<PlayerController>().waterPower)
         {
             simplePlayerShoot = true;
         }

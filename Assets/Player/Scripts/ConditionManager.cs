@@ -3,10 +3,9 @@ using UnityEngine;
 public class ConditionManager : MonoBehaviour
 {
     public float powerUpTime = 10f;
-    public bool electricPower = false;
+    public bool inPower = false;
 
     public GameObject player;
-    public GameObject electricPlayer;
 
     public void Start()
     {
@@ -15,14 +14,13 @@ public class ConditionManager : MonoBehaviour
 
     public void Update()
     {
-        if (!electricPower)
+        if (!inPower)
         {
             CheckPower();
         }
 
-        if (electricPower)
+        if (inPower)
         {
-            ElectricPower();
             powerUpTime -= Time.deltaTime;
         }
 
@@ -34,18 +32,20 @@ public class ConditionManager : MonoBehaviour
 
     private void CheckPower()
     {
-        electricPower = player.GetComponent<PlayerController>().electricPower;
-    }
-
-    private void ElectricPower()
-    {
-
+        if (player.GetComponent<PlayerController>().electricPower || player.GetComponent<PlayerController>().firePower || 
+            player.GetComponent<PlayerController>().poisonPower || player.GetComponent<PlayerController>().waterPower)
+        {
+            inPower = true;
+        }
     }
 
     private void Reset()
     {
         powerUpTime = 10f;
-        electricPower = false;
+        inPower = false;
         player.GetComponent<PlayerController>().electricPower = false;
+        player.GetComponent<PlayerController>().firePower = false;
+        player.GetComponent<PlayerController>().poisonPower = false;
+        player.GetComponent<PlayerController>().waterPower = false;
     }
 }

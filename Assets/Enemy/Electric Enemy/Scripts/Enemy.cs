@@ -14,8 +14,8 @@ public class Enemy : MonoBehaviour
     public LayerMask playerLayer;
     public BoxCollider2D boxCollider2D;
     public Transform firePoint;
-    public GameObject electricBall;
-    public GameObject electricSkill;
+    public GameObject Ball;
+    public GameObject Skill;
 
     private float coolDownTimer = Mathf.Infinity;
 
@@ -63,13 +63,13 @@ public class Enemy : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(electricBall, firePoint.position, firePoint.rotation);
+        Instantiate(Ball, firePoint.position, firePoint.rotation);
     }
 
     private void Die()
     {
         Destroy(gameObject);
-        Instantiate(electricSkill, new Vector2 (transform.position.x, transform.position.y - 0.5f), transform.rotation);
+        Instantiate(Skill, new Vector2 (transform.position.x, transform.position.y - 0.5f), transform.rotation);
     }
 
     private void OnDrawGizmos()
