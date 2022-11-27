@@ -11,6 +11,10 @@ TagManager:
   - ElectricSkill
   - ElectricBullet
   - FireSkill
+  - PoisonSkill
+  - WaterSkill
+  - WaterBullet
+  - PoisonBullet
   layers:
   - Default
   - TransparentFX

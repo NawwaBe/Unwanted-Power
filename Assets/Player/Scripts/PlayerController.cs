@@ -9,6 +9,11 @@ public class PlayerController : MonoBehaviour
     public float jumpHeigth = 0.5f;
     public int amountOfJumps = 1;
 
+    [Header("Condition Parameters")]
+    public bool electricPower = false;
+    public bool firePower = false;
+    public bool poisonPower = false;
+    public bool waterPower = false;
 
     [Header ("Life Parameters")]
     public int health = 3;
@@ -24,10 +29,6 @@ public class PlayerController : MonoBehaviour
     private bool isRuning;
     private bool isGrounded;
     private bool canJump;
-    public bool electricPower = false;
-    public bool firePower = false;
-    public bool poisonPower = false;
-    public bool waterPower = false;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -161,6 +162,24 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             firePower = true;
+        }
+
+        if (other.gameObject.CompareTag("ElectricSkill"))
+        {
+            Destroy(other.gameObject);
+            electricPower = true;
+        }
+
+        if (other.gameObject.CompareTag("PoisonSkill"))
+        {
+            Destroy(other.gameObject);
+            poisonPower = true;
+        }
+
+        if (other.gameObject.CompareTag("WaterSkill"))
+        {
+            Destroy(other.gameObject);
+            waterPower = true;
         }
     }
 }

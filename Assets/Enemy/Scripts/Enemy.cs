@@ -45,7 +45,8 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Bullet")
+        if(other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("ElectricBullet") || other.gameObject.CompareTag("FireBullet") 
+            || other.gameObject.CompareTag("WaterBullet") || other.gameObject.CompareTag("PoisonBullet"))
         {
             health -= 1;
         }
@@ -69,7 +70,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
-        Instantiate(Skill, new Vector2 (transform.position.x, transform.position.y - 0.5f), transform.rotation);
+        Instantiate(Skill, transform.position, transform.rotation);
     }
 
     private void OnDrawGizmos()
