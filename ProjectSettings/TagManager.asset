@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Enemy
   - EnemyBullet
+  - Skill
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Ground
   - Platform
   - Enemy
-  - 
+  - Skill
   - 
   - 
   - 
@@ -53,6 +54,9 @@ TagManager:
     locked: 0
   - name: Bullet
     uniqueID: 962366029
+    locked: 0
+  - name: Skills
+    uniqueID: 454725699
     locked: 0
   - name: Enemy
     uniqueID: 495854093

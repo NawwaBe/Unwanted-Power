@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     public float jumpHeigth = 0.5f;
     public int amountOfJumps = 1;
 
+    [Header("Condition Parameters")]
+    public bool onElectricPower = false;
+
     [Header ("Life Parameters")]
     public int health = 3;
 
@@ -17,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
 
     private float playerMove;
+    [SerializeField] private float powerUpTime;
     private int amountOfJumpsLeft;
     private bool isFacingRight = true;
     private bool isRuning;

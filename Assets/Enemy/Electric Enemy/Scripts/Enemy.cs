@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     public BoxCollider2D boxCollider2D;
     public Transform firePoint;
     public GameObject electricBall;
+    public GameObject electricSkill;
 
     private float coolDownTimer = Mathf.Infinity;
 
@@ -68,6 +69,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+        Instantiate(electricSkill, transform.position, transform.rotation);
     }
 
     private void OnDrawGizmos()
