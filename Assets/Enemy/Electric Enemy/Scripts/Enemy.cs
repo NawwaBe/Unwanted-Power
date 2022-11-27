@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
-        Instantiate(electricSkill, transform.position, transform.rotation);
+        Instantiate(electricSkill, new Vector2 (transform.position.x, transform.position.y - 0.5f), transform.rotation);
     }
 
     private void OnDrawGizmos()

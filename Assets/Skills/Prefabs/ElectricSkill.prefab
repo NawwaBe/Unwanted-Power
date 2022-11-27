@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3015486573569029330}
   - component: {fileID: 3015486573569029341}
   - component: {fileID: 3015486573569029340}
+  - component: {fileID: 5242357810644223712}
   m_Layer: 9
   m_Name: ElectricSkill
   m_TagString: ElectricSkill
@@ -101,3 +102,23 @@ CircleCollider2D:
   m_Offset: {x: 0.0019040108, y: 0}
   serializedVersion: 2
   m_Radius: 0.57703876
+--- !u!95 &5242357810644223712
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3015486573569029343}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0c23c63458f36245860ba1f2a7152c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
