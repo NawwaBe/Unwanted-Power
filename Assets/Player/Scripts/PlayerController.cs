@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour
     public float jumpHeigth = 0.5f;
     public int amountOfJumps = 1;
 
-    [Header("Condition Parameters")]
-    public bool onElectricPower = false;
 
     [Header ("Life Parameters")]
     public int health = 3;
@@ -18,14 +16,15 @@ public class PlayerController : MonoBehaviour
     [Header ("Links")]
     public Transform groundCheck;
     public LayerMask whatIsGround;
+    public GameObject condition;
 
     private float playerMove;
-    [SerializeField] private float powerUpTime;
     private int amountOfJumpsLeft;
     private bool isFacingRight = true;
     private bool isRuning;
     private bool isGrounded;
     private bool canJump;
+    public bool electricPower = false;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -120,6 +119,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isRuning", isRuning);
         anim.SetBool("isGrounded", isGrounded);
         anim.SetFloat("yVelocity", rb.velocity.y);
+        anim.SetBool("electricPower", electricPower);
     }
 
     private void Movement()
@@ -154,5 +154,10 @@ public class PlayerController : MonoBehaviour
             health -= 1;
         }
 
+        if (other.gameObject.CompareTag("ElectricSkill"))
+        {
+            Destroy(other.gameObject);
+            electricPower = true;
+        }
     }
 }

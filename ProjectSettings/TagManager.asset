@@ -8,7 +8,7 @@ TagManager:
   - Bullet
   - Enemy
   - EnemyBullet
-  - Skill
+  - ElectricSkill
   layers:
   - Default
   - TransparentFX
