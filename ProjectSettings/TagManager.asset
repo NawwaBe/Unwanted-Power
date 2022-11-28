@@ -18,6 +18,7 @@ TagManager:
   - FireBullet
   - IceWall
   - Fire
+  - Key
   layers:
   - Default
   - TransparentFX

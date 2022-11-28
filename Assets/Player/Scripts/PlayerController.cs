@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
     public GameObject condition;
     public Image hp;
+    public Image key;
+    public Text timer;
 
     private float playerMove;
     public float animTimer = 0.5f;
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool canJump;
     private bool onDamage;
+    public bool haveKey = false;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -56,6 +59,16 @@ public class PlayerController : MonoBehaviour
         if (onDamage)
         {
             Damage();
+        }
+
+        if (condition.GetComponent<ConditionManager>().inPower)
+        {
+            timer.GetComponent<Text>().text = condition.GetComponent<ConditionManager>().powerUpTime.ToString();
+        }
+
+        if (!condition.GetComponent<ConditionManager>().inPower)
+        {
+            timer.GetComponent<Text>().text = " ";
         }
 
         if (health <= 0)
@@ -215,7 +228,14 @@ public class PlayerController : MonoBehaviour
                 Destroy(other.gameObject);
                 waterPower = true;
             }
-        }        
+        }     
+        
+        if (other.gameObject.CompareTag("Key"))
+        {
+            Destroy(other.gameObject);
+            haveKey = true;
+            key.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
