@@ -15,7 +15,8 @@ public class ElecticBall : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (hitInfo.gameObject.tag != "Enemy" && hitInfo.gameObject.tag != "Bullet")
+        if (hitInfo.gameObject.tag != "Enemy" && !hitInfo.gameObject.CompareTag("Bullet") && !hitInfo.gameObject.CompareTag("ElectricBullet") 
+            && !hitInfo.gameObject.CompareTag("FireBullet") && !hitInfo.gameObject.CompareTag("WaterBullet") && !hitInfo.gameObject.CompareTag("PoisonBullet"))
         {
             Destroy(gameObject);
         }

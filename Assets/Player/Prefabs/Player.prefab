@@ -77,7 +77,6 @@ GameObject:
   - component: {fileID: 8816699086744339220}
   - component: {fileID: 8816699086744339221}
   - component: {fileID: 8816699086744339222}
-  - component: {fileID: 9038938042939923011}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -238,13 +237,17 @@ MonoBehaviour:
   groundCheckRadius: 0.23
   jumpHeigth: 0.5
   amountOfJumps: 1
-  onElectricPower: 0
+  electricPower: 0
+  firePower: 0
+  poisonPower: 0
+  waterPower: 0
   health: 3
   groundCheck: {fileID: 8816699086149854671}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  powerUpTime: 0
+  condition: {fileID: 0}
+  animTimer: 0.5
 --- !u!114 &8816699086744339222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,16 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 8816699085967634529}
   bullet: {fileID: 8432051787174365809, guid: 68c296edd9030574db896299b36ae715, type: 3}
---- !u!114 &9038938042939923011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8816699086255891168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5fb334fc54a19c4894b71d6b9292788, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerUpTime: 30
+  electricPlayerBall: {fileID: 4823280153559244878, guid: 53d6757d1e8a4274ba68f4991eab8098, type: 3}
+  firePlayerBall: {fileID: 6087724762743086694, guid: fc7dfb5e3c51c6d47ae2524e4728a24e, type: 3}
+  poisonPlayerBall: {fileID: 7123463620276535859, guid: 3276fa0a96ed5de4b9eef18ee86b31cd, type: 3}
+  waterPlayerBall: {fileID: 1607322474985444287, guid: ccbb9da536712a140b0926cd8178ac8b, type: 3}

@@ -3,6 +3,7 @@ using UnityEngine;
 public class ConditionManager : MonoBehaviour
 {
     public float powerUpTime = 10f;
+    public float timerInSec = 10f;
     public bool inPower = false;
 
     public GameObject player;
@@ -41,7 +42,7 @@ public class ConditionManager : MonoBehaviour
 
     private void Reset()
     {
-        powerUpTime = 10f;
+        powerUpTime = timerInSec;
         inPower = false;
         player.GetComponent<PlayerController>().electricPower = false;
         player.GetComponent<PlayerController>().firePower = false;

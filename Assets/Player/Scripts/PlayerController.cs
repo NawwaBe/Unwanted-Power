@@ -24,11 +24,13 @@ public class PlayerController : MonoBehaviour
     public GameObject condition;
 
     private float playerMove;
+    public float animTimer = 0.5f;
     private int amountOfJumpsLeft;
     private bool isFacingRight = true;
     private bool isRuning;
     private bool isGrounded;
     private bool canJump;
+    private bool onDamage;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -47,6 +49,11 @@ public class PlayerController : MonoBehaviour
         CheckFlip();
         ChechCanJump();
         UpdateAnimations();
+
+        if (onDamage)
+        {
+            Damage();
+        }
 
         if (health <= 0)
         {
@@ -124,6 +131,10 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isGrounded", isGrounded);
         anim.SetFloat("yVelocity", rb.velocity.y);
         anim.SetBool("electricPower", electricPower);
+        anim.SetBool("firePower", firePower);
+        anim.SetBool("poisonPower", poisonPower);
+        anim.SetBool("waterPower", waterPower);
+        anim.SetBool("onDamage", onDamage);
     }
 
     private void Movement()
@@ -155,31 +166,53 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "EnemyBullet")
         {
-            health -= 1;
+            onDamage = true;         
         }
 
-        if (other.gameObject.CompareTag("FireSkill"))
+        if (!condition.GetComponent<ConditionManager>().inPower)
         {
-            Destroy(other.gameObject);
-            firePower = true;
-        }
+            if (other.gameObject.CompareTag("FireSkill"))
+            {
+                Destroy(other.gameObject);
+                firePower = true;
+            }
 
-        if (other.gameObject.CompareTag("ElectricSkill"))
-        {
-            Destroy(other.gameObject);
-            electricPower = true;
-        }
+            if (other.gameObject.CompareTag("ElectricSkill"))
+            {
+                Destroy(other.gameObject);
+                electricPower = true;
+            }
 
-        if (other.gameObject.CompareTag("PoisonSkill"))
-        {
-            Destroy(other.gameObject);
-            poisonPower = true;
-        }
+            if (other.gameObject.CompareTag("PoisonSkill"))
+            {
+                Destroy(other.gameObject);
+                poisonPower = true;
+            }
 
-        if (other.gameObject.CompareTag("WaterSkill"))
+            if (other.gameObject.CompareTag("WaterSkill"))
+            {
+                Destroy(other.gameObject);
+                waterPower = true;
+            }
+        }        
+    }
+    private void Damage()
+    {
+        GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0.5f, 1f);
+
+        animTimer -= Time.deltaTime;
+
+        if (animTimer < 0)
         {
-            Destroy(other.gameObject);
-            waterPower = true;
+            ReturnAfterDamage();
         }
+    }
+    
+    private void ReturnAfterDamage()
+    {
+        health -= 1;
+        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+        onDamage = false;
+        animTimer = 0.5f;
     }
 }

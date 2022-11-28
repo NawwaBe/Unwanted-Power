@@ -6,6 +6,9 @@ public class Weapon : MonoBehaviour
     public Transform firePoint;
     public GameObject bullet;
     public GameObject electricPlayerBall;
+    public GameObject firePlayerBall;
+    public GameObject poisonPlayerBall;
+    public GameObject waterPlayerBall;
 
     private bool simplePlayerShoot;
     void Update()
@@ -21,6 +24,22 @@ public class Weapon : MonoBehaviour
         {
             ElectricShoot();
         }
+        
+        if (Input.GetKeyDown(KeyCode.Space) && GetComponent<PlayerController>().firePower)
+        {
+            FireShoot();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && GetComponent<PlayerController>().poisonPower)
+        {
+            PoisonShoot();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && GetComponent<PlayerController>().waterPower)
+        {
+            WaterShoot();
+        }
+
     }
 
     private void CheckShoot()
@@ -43,5 +62,20 @@ public class Weapon : MonoBehaviour
     private void ElectricShoot()
     {
         Instantiate(electricPlayerBall, firePoint.position, firePoint.rotation);
+    }
+
+    private void FireShoot()
+    {
+        Instantiate(firePlayerBall, firePoint.position, firePoint.rotation);
+    }
+
+    private void PoisonShoot()
+    {
+        Instantiate(poisonPlayerBall, firePoint.position, firePoint.rotation);
+    }
+
+    private void WaterShoot()
+    {
+        Instantiate(waterPlayerBall, firePoint.position, firePoint.rotation);
     }
 }

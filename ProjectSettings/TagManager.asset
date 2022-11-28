@@ -15,6 +15,7 @@ TagManager:
   - WaterSkill
   - WaterBullet
   - PoisonBullet
+  - FireBullet
   layers:
   - Default
   - TransparentFX
