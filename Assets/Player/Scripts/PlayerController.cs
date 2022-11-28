@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public LayerMask whatIsGround;
     public GameObject condition;
+    public Image hp;
 
     private float playerMove;
     public float animTimer = 0.5f;
@@ -48,6 +50,7 @@ public class PlayerController : MonoBehaviour
         CheckInput();
         CheckFlip();
         ChechCanJump();
+        CheckHP();
         UpdateAnimations();
 
         if (onDamage)
@@ -122,6 +125,24 @@ public class PlayerController : MonoBehaviour
         else
         {
             canJump = true;
+        }
+    }
+
+    private void CheckHP()
+    {
+        if (health == 2)
+        {
+            hp.GetComponent<RectTransform>().anchoredPosition = new Vector2 (100, -50);
+        }
+
+        if (health == 1)
+        {
+            hp.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -50);
+        }
+
+        if (health == 0)
+        {
+            hp.GetComponent<RectTransform>().anchoredPosition = new Vector2(-100, -50);
         }
     }
 
