@@ -217,6 +217,17 @@ public class PlayerController : MonoBehaviour
             }
         }        
     }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Fire")
+        {
+            onDamage = true;
+            playerSpeed *= 0.4f;
+
+        }
+    }
+
     private void Damage()
     {
         GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0.5f, 1f);
@@ -235,5 +246,7 @@ public class PlayerController : MonoBehaviour
         GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
         onDamage = false;
         animTimer = 0.5f;
+
+        playerSpeed = 7f;
     }
 }
