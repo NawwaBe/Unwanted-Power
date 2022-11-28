@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
     public GameObject Skill;
 
     private float coolDownTimer = Mathf.Infinity;
+    private float animTimer = 0.5f;
+    private bool onDamage = false;
 
     private Animator anim;
     void Start()
@@ -37,6 +39,12 @@ public class Enemy : MonoBehaviour
                 Shoot();
             }
         }
+
+        if (onDamage)
+        {
+            Damage();
+        }
+
         if (health <= 0)
         {
             Die();
@@ -48,7 +56,7 @@ public class Enemy : MonoBehaviour
         if(other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("ElectricBullet") || other.gameObject.CompareTag("FireBullet") 
             || other.gameObject.CompareTag("WaterBullet") || other.gameObject.CompareTag("PoisonBullet"))
         {
-            health -= 1;
+            onDamage = true;
         }
         
     }
@@ -71,6 +79,21 @@ public class Enemy : MonoBehaviour
     {
         Destroy(gameObject);
         Instantiate(Skill, transform.position, transform.rotation);
+    }
+
+    private void Damage()
+    {
+        GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0.5f, 1f);
+
+        animTimer -= Time.deltaTime;
+
+        if (animTimer < 0)
+        {
+            health -= 1;
+            GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+            onDamage = false;
+            animTimer = 0.5f;
+        }
     }
 
     private void OnDrawGizmos()

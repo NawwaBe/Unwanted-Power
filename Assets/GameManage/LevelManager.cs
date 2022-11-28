@@ -7,4 +7,19 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene("Level");
     }
+
+    public void Die()
+    {
+        SceneManager.LoadScene("Restart");
+    }
+
+    public void ExitScene()
+    {
+        SceneManager.LoadScene("Exit");
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }

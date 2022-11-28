@@ -17,7 +17,7 @@ public class ElecticBall : MonoBehaviour
     {
         if (hitInfo.gameObject.tag != "Enemy" && !hitInfo.gameObject.CompareTag("Bullet") && !hitInfo.gameObject.CompareTag("ElectricBullet") 
             && !hitInfo.gameObject.CompareTag("FireBullet") && !hitInfo.gameObject.CompareTag("WaterBullet") && !hitInfo.gameObject.CompareTag("PoisonBullet") 
-            && !hitInfo.gameObject.CompareTag("BulletWall"))
+            && !hitInfo.gameObject.CompareTag("BulletWall") && !hitInfo.gameObject.CompareTag("Stairs"))
         {
             Destroy(gameObject);
         }

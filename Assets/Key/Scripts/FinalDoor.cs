@@ -7,7 +7,7 @@ public class FinalDoor : MonoBehaviour
     public GameObject player;
     public Animator door;
 
-    private bool keyInDoor = false;
+    public bool keyInDoor = false;
     void Start()
     {
         

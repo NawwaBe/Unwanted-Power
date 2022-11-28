@@ -19,13 +19,18 @@ public class PlayerController : MonoBehaviour
 
     [Header ("Life Parameters")]
     public int health = 3;
+    public GameObject hp1;
+    public GameObject hp2;
+    public GameObject hp3;
+    public GameObject hp4;
+    public GameObject hp5;
+    public GameObject hp6;
 
     [Header ("Links")]
     public Transform groundCheck;
     public LayerMask whatIsGround;
     public GameObject condition;
     public GameObject stairs;
-    public Image hp;
     public Image key;
     public Text timer;
 
@@ -154,19 +159,34 @@ public class PlayerController : MonoBehaviour
 
     private void CheckHP()
     {
+        if (health == 5)
+        {
+            Destroy(hp1);
+        }
+
+        if (health == 4)
+        {
+            Destroy(hp2);
+        }
+
+        if (health == 3)
+        {
+            Destroy(hp3);
+        }
+
         if (health == 2)
         {
-            hp.GetComponent<RectTransform>().anchoredPosition = new Vector2 (100, -50);
+            Destroy(hp4);
         }
 
         if (health == 1)
         {
-            hp.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -50);
+            Destroy(hp5);
         }
 
         if (health == 0)
         {
-            hp.GetComponent<RectTransform>().anchoredPosition = new Vector2(-100, -50);
+            Destroy(hp6);
         }
     }
 
