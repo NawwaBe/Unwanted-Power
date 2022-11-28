@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 16f;
     public float groundCheckRadius;
     public float jumpHeigth = 0.5f;
+    public float maxPlayerVerticalSpeed = 5f;
     public int amountOfJumps = 1;
 
     [Header("Condition Parameters")]
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public LayerMask whatIsGround;
     public GameObject condition;
+    public GameObject stairs;
     public Image hp;
     public Image key;
     public Text timer;
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        stairs = GameObject.FindGameObjectWithTag("Stairs");
 
         amountOfJumpsLeft = amountOfJumps;
     }
@@ -99,15 +102,23 @@ public class PlayerController : MonoBehaviour
     {
         playerMove = Input.GetAxis("Horizontal");
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (stairs.GetComponent<Stairs>().isInStairs)
         {
-            Jump();
+            float yPlayerMove = Input.GetAxis("Vertical");
+            rb.velocity = new Vector2(rb.velocity.y, yPlayerMove * maxPlayerVerticalSpeed);
         }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                Jump();
+            }
 
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * jumpHeigth);
-        }
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * jumpHeigth);
+            }
+        }        
 
         if (playerMove != 0)
         {

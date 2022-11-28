@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (hitInfo.gameObject.tag != "Player" && hitInfo.gameObject.tag != "EnemyBullet")
+        if (hitInfo.gameObject.tag != "Player" && hitInfo.gameObject.tag != "EnemyBullet" && hitInfo.gameObject.tag != "Stairs")
         {
             Destroy(gameObject);
         }
